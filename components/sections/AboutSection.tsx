@@ -6,19 +6,19 @@ import { staggerContainer, fadeInUp } from '../../lib/motionVariants';
 
 const AboutSection: React.FC<{ isPage?: boolean }> = ({ isPage = false }) => {
     const skills = [
-        { name: 'React & Next.js', level: 95 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'UI/UX Design', level: 85 },
-        { name: 'Node.js', level: 88 },
-        { name: 'Tailwind CSS', level: 92 },
-        { name: 'Three.js', level: 75 },
+        { name: 'React.js & MERN Stack', level: 85 },
+        { name: 'JavaScript & C++', level: 88 },
+        { name: 'Node.js & Express', level: 85 },
+        { name: 'MongoDB & MySQL', level: 82 },
+        { name: 'DSA & OOP', level: 80 },
+        { name: 'REST APIs & Flask', level: 78 },
     ];
 
     const highlights = [
-        { icon: Award, number: '15+', label: 'Awards Won' },
-        { icon: Users, number: '30+', label: 'Happy Clients' },
-        { icon: Rocket, number: '50+', label: 'Projects Launched' },
-        { icon: Coffee, number: '1000+', label: 'Cups of Coffee' },
+        { icon: Code, number: '3+', label: 'Major Projects' },
+        { icon: Award, number: '8+', label: 'Certifications' },
+        { icon: Users, number: '2+', label: 'Years Learning' },
+        { icon: Coffee, number: '1000+', label: 'Hours of Coding' },
     ];
 
     return (
@@ -41,8 +41,8 @@ const AboutSection: React.FC<{ isPage?: boolean }> = ({ isPage = false }) => {
                             About Me
                         </h2>
                         <p className="max-w-3xl mx-auto text-center text-lg text-text-secondary">
-                            I'm a passionate developer and designer with a knack for creating engaging and user-friendly digital experiences. 
-                            I thrive on solving complex problems and turning ideas into beautiful, functional products.
+                            Computer Science student at Dayananda Sagar Institution, Bengaluru (GPA: 8.59). 
+                            Passionate Full Stack Developer specializing in MERN stack, building scalable web applications with modern technologies and creating intuitive user experiences that solve real-world problems.
                         </p>
                     </motion.div>
                     
@@ -57,7 +57,7 @@ const AboutSection: React.FC<{ isPage?: boolean }> = ({ isPage = false }) => {
                             <Brush className="w-14 h-14 mx-auto text-brand-dark mb-4 relative z-10"/>
                             <h3 className="text-2xl font-black mb-3 relative z-10 text-brand-dark">Designer</h3>
                             <p className="text-text-secondary relative z-10">
-                                I value simple content structure, clean design patterns, and thoughtful interactions that delight users.
+                                Creating clean, modern interfaces with Tailwind CSS and responsive design, focusing on user experience and accessible UI patterns.
                             </p>
                         </motion.div>
                          <motion.div 
@@ -69,7 +69,7 @@ const AboutSection: React.FC<{ isPage?: boolean }> = ({ isPage = false }) => {
                             <Code className="w-14 h-14 mx-auto text-accent mb-4 relative z-10"/>
                             <h3 className="text-2xl font-black mb-3 relative z-10 text-brand-dark">Developer</h3>
                             <p className="text-text-secondary relative z-10">
-                                I bring ideas to life in the browser, from static sites to complex web applications with modern tech stacks.
+                                Building full-stack applications with React, Node.js, Express, and MongoDB. Experienced in RESTful APIs and modern development practices.
                             </p>
                         </motion.div>
                          <motion.div 
@@ -81,7 +81,7 @@ const AboutSection: React.FC<{ isPage?: boolean }> = ({ isPage = false }) => {
                             <BrainCircuit className="w-14 h-14 mx-auto text-purple-600 mb-4 relative z-10"/>
                             <h3 className="text-2xl font-black mb-3 relative z-10 text-brand-dark">Problem Solver</h3>
                             <p className="text-text-secondary relative z-10">
-                                I love breaking down complex challenges and finding elegant, efficient solutions that make a difference.
+                                Proficient in DSA and OOP concepts. Building applications with strong problem-solving skills and efficient algorithmic thinking.
                             </p>
                         </motion.div>
                     </div>

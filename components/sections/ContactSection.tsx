@@ -28,9 +28,9 @@ const ContactSection: React.FC<{ isPage?: boolean }> = ({ isPage = false }) => {
     };
 
     const contactInfo = [
-        { icon: Mail, label: 'Email', value: 'hello@sujal.dev' },
-        { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567' },
-        { icon: MapPin, label: 'Location', value: 'San Francisco, CA' },
+        { icon: Mail, label: 'Email', value: 'sujalsingh2724@gmail.com' },
+        { icon: Phone, label: 'Phone', value: '+91-7974995417' },
+        { icon: MapPin, label: 'Location', value: 'Bengaluru, India' },
     ];
 
     return (

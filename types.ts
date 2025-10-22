@@ -10,6 +10,8 @@ export interface Project {
     liveUrl?: string;
     repoUrl?: string;
     category: 'Web' | 'UI/UX' | '3D';
+    details?: string;
+    challenges?: string;
 }
 
 export interface Skill {

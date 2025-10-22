@@ -3,17 +3,48 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '../../types';
 import ProjectCard from '../ui/ProjectCard';
+import ProjectModal from '../ui/ProjectModal';
 import { staggerContainer, fadeInUp } from '../../lib/motionVariants';
 import Button from '../ui/Button';
 import { Filter } from 'lucide-react';
 
 const sampleProjects: Project[] = [
-    { id: 1, title: 'E-commerce Platform', description: 'A full-featured online shopping experience with payment integration, cart management, and responsive design.', techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Stripe'], imageUrl: 'https://picsum.photos/seed/project1/600/400', category: 'Web' },
-    { id: 2, title: 'Design System', description: 'A comprehensive UI kit and design system with reusable components and documentation.', techStack: ['Figma', 'Storybook', 'React'], imageUrl: 'https://picsum.photos/seed/project2/600/400', category: 'UI/UX' },
-    { id: 3, title: '3D Product Visualizer', description: 'An interactive 3D model viewer allowing customers to explore products from every angle.', techStack: ['Three.js', 'React-Three-Fiber', 'GSAP'], imageUrl: 'https://picsum.photos/seed/project3/600/400', category: '3D' },
-    { id: 4, title: 'Mobile Banking App', description: 'Secure and intuitive mobile banking experience with biometric authentication.', techStack: ['React Native', 'Node.js', 'MongoDB'], imageUrl: 'https://picsum.photos/seed/project4/600/400', category: 'Web' },
-    { id: 5, title: 'Portfolio Website', description: 'Modern portfolio showcasing creative work with smooth animations and interactions.', techStack: ['Next.js', 'Framer Motion', 'Tailwind'], imageUrl: 'https://picsum.photos/seed/project5/600/400', category: 'UI/UX' },
-    { id: 6, title: 'AR Furniture App', description: 'Augmented reality application for visualizing furniture in your space.', techStack: ['Unity', 'ARKit', 'C#'], imageUrl: 'https://picsum.photos/seed/project6/600/400', category: '3D' },
+    { 
+        id: 1, 
+        title: 'SkillSync - Internal Talent Discovery Platform', 
+        description: 'A comprehensive web application designed to streamline internal talent discovery and project matching within organizations using MERN stack.', 
+        techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'REST API', 'JWT'], 
+        imageUrl: 'https://picsum.photos/seed/skillsync/600/400', 
+        category: 'Web',
+        details: 'Employee skill profiling and portfolio management\nSmart project-employee matching algorithm\nAdmin dashboard for team management\nRole-based access control with JWT authentication\nReal-time skill search and filtering\nEmployee availability tracking\nProject assignment workflow\nPerformance analytics dashboard',
+        challenges: 'Implementing an efficient matching algorithm that considers multiple factors (skills, availability, experience) while maintaining fast query performance. Used MongoDB aggregation pipelines and indexing strategies to optimize search across large datasets.',
+        liveUrl: 'https://github.com/sujal2702/SkillSync-Infosys',
+        repoUrl: 'https://github.com/sujal2702/SkillSync-Infosys'
+    },
+    { 
+        id: 2, 
+        title: 'InsightDocs - AI-Powered Document Analysis', 
+        description: 'An intelligent document analysis system that extracts and analyzes data from PDFs using AI, providing actionable insights and automated reporting.', 
+        techStack: ['Flask', 'Python', 'PyMuPDF', 'Ollama AI', 'REST API'], 
+        imageUrl: 'https://picsum.photos/seed/insightdocs/600/400', 
+        category: 'Web',
+        details: 'PDF text extraction using PyMuPDF\nAI-powered content analysis with Ollama\nAutomated data extraction and categorization\nIntelligent document summarization\nRESTful API for document processing\nSupport for multiple document formats\nExport results to structured formats\nBatch processing capabilities',
+        challenges: 'Ensuring accurate text extraction from complex PDF layouts and integrating AI for meaningful analysis. Implemented custom parsing logic for tables and multi-column layouts. Fine-tuned AI prompts to extract relevant insights while managing API rate limits and response times.',
+        liveUrl: 'https://github.com/sujal2702/InsightDocs',
+        repoUrl: 'https://github.com/sujal2702/InsightDocs'
+    },
+    { 
+        id: 3, 
+        title: 'LeetMetric - LeetCode Statistics Tracker', 
+        description: 'A comprehensive statistics tracking platform for LeetCode users, visualizing coding progress with interactive charts and performance metrics.', 
+        techStack: ['JavaScript', 'HTML5', 'CSS3', 'GraphQL', 'Chart.js', 'LeetCode API'], 
+        imageUrl: 'https://picsum.photos/seed/leetmetric/600/400', 
+        category: 'Web',
+        details: 'Real-time LeetCode profile statistics\nInteractive data visualizations with Chart.js\nProblem-solving progress tracking\nDifficulty-based problem breakdown\nSubmission success rate analytics\nDaily streak and consistency metrics\nComparison with global statistics\nResponsive design for all devices',
+        challenges: 'Working with LeetCode\'s GraphQL API and handling rate limiting while providing real-time updates. Implemented efficient caching strategies with localStorage to minimize API calls. Created custom data aggregation logic to compute meaningful statistics from raw API data.',
+        liveUrl: 'https://github.com/sujal2702/LeetMetric',
+        repoUrl: 'https://github.com/sujal2702/LeetMetric'
+    },
 ];
 
 interface ProjectsSectionProps {
@@ -22,6 +53,8 @@ interface ProjectsSectionProps {
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ featured = false }) => {
     const [filter, setFilter] = useState<'All' | 'Web' | 'UI/UX' | '3D'>('All');
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     
     const categories = ['All', 'Web', 'UI/UX', '3D'] as const;
     
@@ -30,6 +63,16 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ featured = false }) =
         : sampleProjects.filter(p => p.category === filter);
     
     const projectsToShow = featured ? filteredProjects.slice(0, 3) : filteredProjects;
+
+    const handleProjectClick = (project: Project) => {
+        setSelectedProject(project);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setTimeout(() => setSelectedProject(null), 300);
+    };
 
     return (
         <section className="py-20 bg-gradient-to-b from-bg-cream to-white">
@@ -52,8 +95,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ featured = false }) =
                         </h2>
                         <p className="max-w-2xl mx-auto text-lg text-text-secondary">
                             {featured 
-                                ? 'A selection of my best work across web development, design, and 3D experiences.'
-                                : 'Explore my complete portfolio of creative projects and technical solutions.'}
+                                ? 'Featured projects showcasing my expertise in full-stack development, AI integration, and data visualization.'
+                                : 'Explore my portfolio of real-world applications built with MERN stack, Flask, and modern web technologies.'}
                         </p>
                     </motion.div>
 
@@ -81,13 +124,32 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ featured = false }) =
                         </motion.div>
                     )}
 
-                    {/* Projects Grid */}
+                    {/* Projects Grid with Stack Effect */}
                     <motion.div 
                         layout
-                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+                        className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 mb-16 px-4 md:px-8"
                     >
-                        {projectsToShow.map((project) => (
-                            <ProjectCard key={project.id} project={project} />
+                        {projectsToShow.map((project, index) => (
+                            <motion.div
+                                key={project.id}
+                                initial={{ opacity: 0, y: 60, rotateZ: -5 }}
+                                whileInView={{ 
+                                    opacity: 1, 
+                                    y: 0, 
+                                    rotateZ: 0,
+                                    transition: {
+                                        delay: index * 0.15,
+                                        duration: 0.6,
+                                        ease: [0.23, 1, 0.32, 1]
+                                    }
+                                }}
+                                viewport={{ once: true, amount: 0.2 }}
+                            >
+                                <ProjectCard 
+                                    project={project} 
+                                    onClick={() => handleProjectClick(project)}
+                                />
+                            </motion.div>
                         ))}
                     </motion.div>
 
@@ -101,6 +163,13 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ featured = false }) =
                     )}
                 </motion.div>
             </div>
+
+            {/* Project Modal */}
+            <ProjectModal 
+                project={selectedProject}
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+            />
         </section>
     );
 };

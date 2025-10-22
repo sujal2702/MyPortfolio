@@ -5,40 +5,40 @@ import { staggerContainer, fadeInUp } from '../../lib/motionVariants';
 
 const skillCategories = [
     {
-        title: 'Frontend',
+        title: 'Frontend Development',
         icon: Code2,
         color: 'from-blue-500 to-cyan-500',
-        skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion']
+        skills: ['React.js', 'TypeScript', 'JavaScript (ES6+)', 'HTML5 & CSS3', 'Tailwind CSS', 'Framer Motion']
     },
     {
-        title: 'Design',
-        icon: Palette,
-        color: 'from-pink-500 to-rose-500',
-        skills: ['Figma', 'Adobe XD', 'UI/UX', 'Prototyping', 'Design Systems']
-    },
-    {
-        title: 'Backend',
+        title: 'Backend Development',
         icon: Database,
         color: 'from-green-500 to-emerald-500',
-        skills: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'REST APIs']
+        skills: ['Node.js', 'Express.js', 'MongoDB', 'REST API', 'JWT Authentication', 'Socket.io']
+    },
+    {
+        title: 'Full Stack & Tools',
+        icon: Globe,
+        color: 'from-purple-500 to-indigo-500',
+        skills: ['MERN Stack', 'Git & GitHub', 'Redux', 'Postman', 'VS Code', 'Responsive Design']
+    },
+    {
+        title: 'UI/UX & Design',
+        icon: Palette,
+        color: 'from-pink-500 to-rose-500',
+        skills: ['Figma', 'Responsive Design', 'Mobile-First Approach', 'User Interface Design', 'Prototyping']
     },
     {
         title: '3D & Animation',
         icon: Rocket,
-        color: 'from-purple-500 to-indigo-500',
-        skills: ['Three.js', 'React Three Fiber', 'GSAP', 'WebGL', 'Blender']
-    },
-    {
-        title: 'Tools & Platforms',
-        icon: Globe,
         color: 'from-orange-500 to-amber-500',
-        skills: ['Git', 'Docker', 'AWS', 'Vercel', 'VS Code']
+        skills: ['Three.js', 'React Three Fiber', 'GSAP', 'WebGL', 'Interactive Animations']
     },
     {
-        title: 'Mobile',
+        title: 'Additional Skills',
         icon: Smartphone,
         color: 'from-teal-500 to-cyan-500',
-        skills: ['React Native', 'PWA', 'Responsive Design', 'Mobile-First', 'Cross-Platform']
+        skills: ['Problem Solving', 'Team Collaboration', 'Agile Development', 'Code Review', 'API Integration']
     },
 ];
 

@@ -1,14 +1,13 @@
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
-import { Canvas } from '@react-three/fiber';
-import Scene from '../3d/Scene';
+import { ProfileCardDemo } from '../ui/ProfileCard';
 import { ChevronDown, Sparkles } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
-    const name = "Sujal";
-    const roles = ["Full-Stack Developer", "UI/UX Designer", "Creative Thinker"];
+    const name = "Sujal Kumar Singh";
+    const roles = ["Full-Stack Developer", "MERN Stack Developer", "Computer Science Student"];
     const [currentRole, setCurrentRole] = React.useState(0);
 
     React.useEffect(() => {
@@ -38,7 +37,7 @@ const HeroSection: React.FC = () => {
     };
 
     return (
-                <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-white">
+                <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 bg-white">
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 -z-10" />
             
@@ -106,8 +105,8 @@ const HeroSection: React.FC = () => {
                         transition={{ delay: 0.8 }}
                         className="text-lg text-text-secondary mb-8 max-w-lg"
                     >
-                        I craft beautiful digital experiences with clean code and stunning design. 
-                        Let's build something extraordinary together.
+                        Computer Science Undergraduate with hands-on experience in MERN Stack. 
+                        Building scalable solutions and contributing to real-world projects with clean code and modern design.
                     </motion.p>
 
                     <motion.div
@@ -132,9 +131,9 @@ const HeroSection: React.FC = () => {
                         className="grid grid-cols-3 gap-6 mt-12 max-w-md mx-auto md:mx-0"
                     >
                         {[
-                            { number: '5+', label: 'Years Exp.' },
-                            { number: '50+', label: 'Projects' },
-                            { number: '30+', label: 'Happy Clients' },
+                            { number: '2+', label: 'Years Exp.' },
+                            { number: '3+', label: 'Projects' },
+                            { number: '8+', label: 'Certifications' },
                         ].map((stat, idx) => (
                             <div key={idx} className="text-center md:text-left">
                                 <div className="text-3xl font-black text-brand-dark">
@@ -152,17 +151,9 @@ const HeroSection: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.3 }}
-                    className="w-full h-96 md:h-[600px] relative"
+                    className="w-full h-96 md:h-auto flex items-center justify-center relative"
                 >
-                    <Suspense fallback={
-                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl">
-                            <div className="animate-pulse text-text-secondary">Loading 3D Scene...</div>
-                        </div>
-                    }>
-                        <Canvas className="rounded-2xl">
-                            <Scene />
-                        </Canvas>
-                    </Suspense>
+                    <ProfileCardDemo />
                 </motion.div>
             </div>
 

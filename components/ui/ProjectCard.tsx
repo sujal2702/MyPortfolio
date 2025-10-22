@@ -1,22 +1,65 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '../../types';
 import { fadeInUp } from '../../lib/motionVariants';
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ProjectCardProps {
     project: Project;
+    onClick: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
     return (
         <motion.div
             variants={fadeInUp}
-            whileHover={{ y: -10 }}
-            className="rounded-2xl overflow-hidden shadow-soft bg-white group cursor-pointer border border-gray-light hover:shadow-medium transition-all duration-300"
+            whileHover={{ 
+                y: -25, 
+                scale: 1.05,
+                rotateZ: 2,
+                transition: { 
+                    duration: 0.4, 
+                    ease: [0.23, 1, 0.32, 1] // Custom easing for smooth motion
+                }
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onClick}
+            className="rounded-2xl overflow-visible shadow-soft bg-white group cursor-pointer border border-gray-light hover:shadow-2xl transition-shadow duration-500 relative"
         >
-            <div className="relative overflow-hidden h-64">
+            {/* Stacked cards effect - Multiple layers for depth */}
+            <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-card-yellow/30 to-white rounded-2xl border border-gray-light/50 -z-10"
+                style={{ 
+                    transform: "translateY(8px) translateX(8px) scale(0.97)",
+                    filter: "blur(2px)"
+                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.7 }}
+                transition={{ delay: 0.1 }}
+            />
+            <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-card-teal/20 to-white rounded-2xl border border-gray-light/30 -z-20"
+                style={{ 
+                    transform: "translateY(16px) translateX(16px) scale(0.94)",
+                    filter: "blur(4px)"
+                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.5 }}
+                transition={{ delay: 0.2 }}
+            />
+            <motion.div 
+                className="absolute inset-0 bg-white/50 rounded-2xl border border-gray-light/20 -z-30"
+                style={{ 
+                    transform: "translateY(24px) translateX(24px) scale(0.91)",
+                    filter: "blur(6px)"
+                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.3 }}
+                transition={{ delay: 0.3 }}
+            />
+            
+            <div className="relative z-10 bg-white rounded-2xl overflow-hidden">
+                <div className="relative overflow-hidden h-64">
                 <img
                     src={project.imageUrl}
                     alt={project.title}
@@ -24,34 +67,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                
-                {/* Hover Actions */}
-                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {project.liveUrl && (
-                        <motion.a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-brand-dark hover:bg-primary transition-colors"
-                        >
-                            <ExternalLink className="w-5 h-5" />
-                        </motion.a>
-                    )}
-                    {project.repoUrl && (
-                        <motion.a
-                            href={project.repoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-brand-dark hover:bg-primary transition-colors"
-                        >
-                            <Github className="w-5 h-5" />
-                        </motion.a>
-                    )}
-                </div>
 
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
@@ -85,6 +100,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         </span>
                     ))}
                 </div>
+            </div>
             </div>
         </motion.div>
     );

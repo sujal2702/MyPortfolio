@@ -15,6 +15,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.5, ease: 'easeInOut' }}
+            className="pt-24"
         >
             {children}
         </motion.div>

@@ -14,7 +14,10 @@
                 extend: {
                     colors: {
                         // Primary - Canary Yellow (exact from design)
-                        'primary': '#FFE500',
+                        'primary': {
+                            DEFAULT: '#FFE500',
+                            foreground: '#1E1E1E',
+                        },
                         'primary-dark': '#E6CE00',
                         'primary-light': '#FFF4B3',
                         
@@ -45,9 +48,30 @@
                         'text-dark-secondary': '#E5E5E5',
                         
                         // Card backgrounds (exact from design)
+                        'card': {
+                            DEFAULT: '#FFFFFF',
+                            foreground: '#1E1E1E',
+                        },
                         'card-yellow': '#FFF4CC',
                         'card-blue': '#D4F5F4',
                         'card-gray': '#F5F5F5',
+                        
+                        // Shadcn-compatible colors
+                        'background': '#FFFFFF',
+                        'foreground': '#1E1E1E',
+                        'muted': {
+                            DEFAULT: '#F5F5F5',
+                            foreground: '#6B6B6B',
+                        },
+                        'popover': {
+                            DEFAULT: '#FFFFFF',
+                            foreground: '#1E1E1E',
+                        },
+                        'secondary': {
+                            DEFAULT: '#F5F5F5',
+                            foreground: '#1E1E1E',
+                        },
+                        'border': '#E8E8E8',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -107,6 +131,25 @@
       ::-moz-selection {
         background-color: #FFE500;
         color: #1A1A1A;
+      }
+
+      /* Custom scrollbar styles */
+      .scrollbar-thin::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .scrollbar-thin::-webkit-scrollbar-track {
+        background: #F5F5F5;
+        border-radius: 10px;
+      }
+
+      .scrollbar-thin::-webkit-scrollbar-thumb {
+        background: rgba(255, 229, 0, 0.3);
+        border-radius: 10px;
+      }
+
+      .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 229, 0, 0.5);
       }
     </style>
 <script type="importmap">
